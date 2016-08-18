@@ -1,0 +1,13 @@
+before_script:
+  - export ANDROID_HOME=/opt/android
+  - uname -a
+
+build:
+  stage: build
+  script:
+    - ./gradlew clean assembleRelease
+  artifacts:
+    name: "release-${CI_BUILD_REF_NAME}"
+    paths:
+      - ./app/build/outputs/apk/app-release.apk
+
