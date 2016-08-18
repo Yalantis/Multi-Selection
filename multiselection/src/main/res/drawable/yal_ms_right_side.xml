@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:top="@dimen/yal_ms_divider_width_half_negative"
+        android:bottom="@dimen/yal_ms_divider_width_half_negative"
+        android:right="@dimen/yal_ms_divider_width_half_negative">
+        <shape android:shape="rectangle">
+            <stroke android:width="@dimen/yal_ms_divider_width_half" android:color="@color/yal_ms_divider_color" />
+            <solid android:color="#00000000" />
+        </shape>
+    </item>
+</layer-list>

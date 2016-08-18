@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/yal_ms_right_side">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/yal_ms_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/yal_ms_knob_width_half"/>
+
+    <View
+        android:layout_width="@dimen/yal_ms_knob_width_half"
+        android:layout_height="@dimen/yal_ms_knob_height"
+        android:layout_gravity="left|center_vertical"
+        android:background="@drawable/yal_ms_round_right"
+        />
+
+</FrameLayout>
