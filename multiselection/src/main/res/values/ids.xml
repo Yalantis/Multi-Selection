@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="yal_ms_avatar" type="id"/>
+    <item name="yal_ms_multiselect" type="id" />
+</resources>

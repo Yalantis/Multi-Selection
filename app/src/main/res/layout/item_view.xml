@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/padding"
+    android:background="@drawable/item_background"
+    >
+
+  <ImageView
+      android:id="@id/yal_ms_avatar"
+      android:layout_width="46dp"
+      android:layout_height="46dp"
+      android:layout_alignParentTop="true"
+      android:layout_alignParentStart="true"
+      />
+
+  <LinearLayout
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      android:layout_toEndOf="@id/yal_ms_avatar"
+      android:layout_centerVertical="true"
+      >
+
+    <TextView
+        android:id="@+id/track"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin"
+        android:paddingBottom="3dp"
+        android:textSize="18sp"
+        android:textColor="@android:color/white"
+        />
+
+    <TextView
+        android:id="@+id/artist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:layout_marginLeft="@dimen/margin"
+        android:textColor="@android:color/darker_gray"
+        />
+
+  </LinearLayout>
+
+</RelativeLayout>

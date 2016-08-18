@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="yal_ms_knob_height">25dp</dimen>
+    <dimen name="yal_ms_knob_width_half">1.5dp</dimen>
+
+    <dimen name="yal_ms_divider_width_half">3dp</dimen>
+    <dimen name="yal_ms_divider_width_half_negative">-3dp</dimen>
+
+</resources>
