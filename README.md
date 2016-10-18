@@ -4,13 +4,14 @@
 [![](https://jitpack.io/v/yalantis/multi-selection.svg)](https://jitpack.io/#yalantis/multi-selection)
 [![Yalantis](https://raw.githubusercontent.com/Yalantis/PullToRefresh/develop/PullToRefreshDemo/Resources/badge_dark.png)](https://yalantis.com/?utm_source=github)
 
-<br>Check this <a href="https://dribbble.com/shots/2904577-Multi-Selection-Experiment">project on dribbble</a>.
+Check this [project on dribbble](https://dribbble.com/shots/2904577-Multi-Selection-Experiment)
+
+Read how we did it [here](https://yalantis.com/blog/how-we-created-a-multiselection-solution-for-android/)
 
 <img src="imgs/dribble.gif"/>
 
 ##Requirements
 - Android SDK 17+
-
 
 ##Usage
 
@@ -31,7 +32,11 @@ dependencies {
 }
 ```
 
-#### Let us know!
+## How to use this library
+
+Insructions can be found [here](https://yalantis.com/blog/how-we-created-a-multiselection-solution-for-android/)
+
+## Let us know!
 
 We’d be really happy if you sent us links to your projects where you use our component. Just send an email to github@yalantis.com And do let us know if you have any questions or suggestion regarding the animation. 
 
