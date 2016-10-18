@@ -6,7 +6,7 @@
 
 Check this [project on dribbble](https://dribbble.com/shots/2904577-Multi-Selection-Experiment)
 
-Read how we did it [here](https://yalantis.com/blog/how-we-created-a-multiselection-solution-for-android/)
+Read how we did it [on our blog](https://yalantis.com/blog/how-we-created-a-multiselection-solution-for-android/)
 
 <img src="imgs/dribble.gif"/>
 
@@ -34,7 +34,7 @@ dependencies {
 
 ## How to use this library
 
-Insructions can be found [here](https://yalantis.com/blog/how-we-created-a-multiselection-solution-for-android/)
+Insructions can be found [here](https://yalantis.com/blog/how-we-created-a-multiselection-solution-for-android/) in section How to use MultiSelect
 
 ## Let us know!
 
