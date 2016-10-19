@@ -4,6 +4,8 @@
 [![](https://jitpack.io/v/yalantis/multi-selection.svg)](https://jitpack.io/#yalantis/multi-selection)
 [![Yalantis](https://raw.githubusercontent.com/Yalantis/PullToRefresh/develop/PullToRefreshDemo/Resources/badge_dark.png)](https://yalantis.com/?utm_source=github)
 
+<a href="https://play.google.com/store/apps/details?id=com.yalantis.multiselect.demo"><img alt="Android app on Google Play" src="https://developer.android.com/images/brand/en_app_rgb_wo_60.png" /></a>
+
 Check this [project on dribbble](https://dribbble.com/shots/2904577-Multi-Selection-Experiment)
 
 Read how we did it [on our blog](https://yalantis.com/blog/how-we-created-a-multiselection-solution-for-android/)
@@ -18,11 +20,11 @@ Read how we did it [on our blog](https://yalantis.com/blog/how-we-created-a-mult
 Add to your root build.gradle:
 ```Groovy
 allprojects {
-		repositories {
-			...
-			maven { url "https://jitpack.io" }
-		}
+	repositories {
+	...
+	maven { url "https://jitpack.io" }
 	}
+}
 ```
 
 Add the dependency:
