@@ -4,6 +4,8 @@
 [![](https://jitpack.io/v/yalantis/multi-selection.svg)](https://jitpack.io/#yalantis/multi-selection)
 [![Yalantis](https://raw.githubusercontent.com/Yalantis/PullToRefresh/develop/PullToRefreshDemo/Resources/badge_dark.png)](https://yalantis.com/?utm_source=github)
 
+[Live DEMO on appetize.io](https://appetize.io/app/ed1av4rv6k3f29y8e07kpj3e9g?device=nexus5&scale=75&orientation=portrait&osVersion=7.0)
+
 <a href="https://play.google.com/store/apps/details?id=com.yalantis.multiselect.demo"><img alt="Android app on Google Play" src="https://developer.android.com/images/brand/en_app_rgb_wo_60.png" /></a>
 
 Check this [project on dribbble](https://dribbble.com/shots/2904577-Multi-Selection-Experiment)
