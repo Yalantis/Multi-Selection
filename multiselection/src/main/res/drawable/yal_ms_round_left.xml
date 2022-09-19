@@ -2,8 +2,10 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item>
         <shape android:shape="rectangle">
-            <corners android:bottomLeftRadius="2dp" android:topLeftRadius="2dp"/>
-            <solid android:color="@color/yal_ms_divider_knob_color"/>
+            <corners
+                android:bottomLeftRadius="2dp"
+                android:topLeftRadius="2dp" />
+            <solid android:color="@color/yal_ms_divider_knob_color" />
         </shape>
     </item>
 </layer-list>

@@ -1,7 +1,7 @@
 package com.yalantis.multiselectdemo.demo.model;
 
-import android.support.annotation.DrawableRes;
-import android.support.v4.app.Fragment;
+
+import androidx.annotation.DrawableRes;
 
 import java.io.Serializable;
 
@@ -10,7 +10,8 @@ import java.io.Serializable;
  */
 public class Track implements Comparable<Track>, Serializable {
     private String trackName;
-    private @DrawableRes int album;
+    private @DrawableRes
+    int album;
     private String artist;
 
     public Track(String trackName, String artist, @DrawableRes int album) {

@@ -15,8 +15,8 @@ fun View.removeFromParent() {
     }
 }
 
-inline fun <T: View> T.afterMeasured(crossinline f: T.() -> Unit) {
-    viewTreeObserver.addOnGlobalLayoutListener(object: ViewTreeObserver.OnGlobalLayoutListener {
+inline fun <T : View> T.afterMeasured(crossinline f: T.() -> Unit) {
+    viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
         override fun onGlobalLayout() {
             if (measuredHeight > 0 && measuredWidth > 0) {
                 viewTreeObserver.removeOnGlobalLayoutListener(this)

@@ -5,17 +5,15 @@ import android.animation.ValueAnimator
 import android.content.Context
 import android.os.Bundle
 import android.os.Parcelable
-import android.support.annotation.NonNull
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.util.DisplayMetrics
-import android.util.Rational
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import android.view.animation.OvershootInterpolator
 import android.widget.FrameLayout
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.yalantis.multiselection.R
 import com.yalantis.multiselection.lib.adapter.BaseAdapter
 import com.yalantis.multiselection.lib.adapter.BaseLeftAdapter
@@ -29,9 +27,10 @@ import java.io.Serializable
  * Created by Artem Kholodnyi on 8/21/16.
  */
 
-internal class MultiSelectImpl<I : Comparable<I>>(myContext: Context,
-                                                  val parent: ViewGroup)
-    : FrameLayout(myContext), MultiSelect<I> {
+internal class MultiSelectImpl<I : Comparable<I>>(
+    myContext: Context,
+    val parent: ViewGroup
+) : FrameLayout(myContext), MultiSelect<I> {
 
     init {
         isSaveEnabled = true
@@ -49,7 +48,6 @@ internal class MultiSelectImpl<I : Comparable<I>>(myContext: Context,
 
 
     override val selectedItems: List<I>?
-        @NonNull
         get() {
             @Suppress("UNCHECKED_CAST")
             return (recyclerRight.adapter as BaseRightAdapter<I, *>).items
@@ -132,19 +130,21 @@ internal class MultiSelectImpl<I : Comparable<I>>(myContext: Context,
     private fun setUpViews() {
         val inflater = LayoutInflater.from(context)
 
-        pagesAdapter.pageLeft = inflater.inflate(R.layout.yal_ms_page_left, viewPager, false).apply {
-            (findViewById(R.id.yal_ms_recycler) as RecyclerView).apply {
-                layoutManager = LinearLayoutManager(context)
-                itemAnimator = MultiSelectItemAnimator()
+        pagesAdapter.pageLeft =
+            inflater.inflate(R.layout.yal_ms_page_left, viewPager, false).apply {
+                (findViewById(R.id.yal_ms_recycler) as RecyclerView).apply {
+                    layoutManager = LinearLayoutManager(context)
+                    itemAnimator = MultiSelectItemAnimator()
+                }
             }
-        }
 
-        pagesAdapter.pageRight = inflater.inflate(R.layout.yal_ms_page_right, viewPager, false).apply {
-            (findViewById(R.id.yal_ms_recycler) as RecyclerView).apply {
-                layoutManager = LinearLayoutManager(context)
-                itemAnimator = MultiSelectItemAnimator()
+        pagesAdapter.pageRight =
+            inflater.inflate(R.layout.yal_ms_page_right, viewPager, false).apply {
+                (findViewById(R.id.yal_ms_recycler) as RecyclerView).apply {
+                    layoutManager = LinearLayoutManager(context)
+                    itemAnimator = MultiSelectItemAnimator()
+                }
             }
-        }
     }
 
     override fun select(position: Int) = animate(recyclerLeft, recyclerRight, position)
@@ -152,13 +152,13 @@ internal class MultiSelectImpl<I : Comparable<I>>(myContext: Context,
     override fun deselect(position: Int) = animate(recyclerRight, recyclerLeft, position)
 
     private fun animate(sourceRecycler: RecyclerView, targetRecycler: RecyclerView, position: Int) {
-        val view = sourceRecycler.layoutManager.findViewByPosition(position) ?: return
+        val view = sourceRecycler.layoutManager?.findViewByPosition(position) ?: return
 
         view.isClickable = false
 
         val initial = view.getLocationOnScreen()
 
-        sourceRecycler.layoutManager.removeViewAt(position)
+        sourceRecycler.layoutManager?.removeViewAt(position)
 
         @Suppress("UNCHECKED_CAST")
         val removedItem: I = (sourceRecycler.adapter as BaseAdapter<I, *>).removeItemAt(position)
@@ -223,28 +223,35 @@ internal class MultiSelectImpl<I : Comparable<I>>(myContext: Context,
         viewPager.currentItem = 0
     }
 
-    internal fun animateAlpha(removedItem: I, targetRecycler: RecyclerView, view: View, duration: Long) {
+    internal fun animateAlpha(
+        removedItem: I,
+        targetRecycler: RecyclerView,
+        view: View,
+        duration: Long
+    ) {
         ValueAnimator.ofFloat(1f, 0f).setDuration(duration).apply {
             addUpdateListener {
                 val value = it.animatedValue as Float
                 if (view is ViewGroup) {
                     (0..view.childCount - 1)
-                            .map { view.getChildAt(it) }
-                            .filter { it.id != R.id.yal_ms_avatar }
-                            .forEach { it?.alpha = value }
+                        .map { view.getChildAt(it) }
+                        .filter { it.id != R.id.yal_ms_avatar }
+                        .forEach { it?.alpha = value }
                 }
             }
 
             addListener(object : Animator.AnimatorListener {
-                override fun onAnimationStart(p0: Animator?) = Unit
-                override fun onAnimationRepeat(p0: Animator?) = Unit
-                override fun onAnimationEnd(p0: Animator?) = finallyDo()
-                override fun onAnimationCancel(p0: Animator?) = finallyDo()
+                override fun onAnimationStart(p0: Animator) = Unit
+                override fun onAnimationRepeat(p0: Animator) = Unit
+                override fun onAnimationEnd(p0: Animator) = finallyDo()
+                override fun onAnimationCancel(p0: Animator) = finallyDo()
 
                 val finallyDo = {
                     view.removeFromParent()
                     @Suppress("UNCHECKED_CAST")
-                    (targetRecycler.adapter as BaseAdapter<I, out RecyclerView.ViewHolder>).showItem(removedItem)
+                    (targetRecycler.adapter as BaseAdapter<I, out RecyclerView.ViewHolder>).showItem(
+                        removedItem
+                    )
                     Unit
                 }
             })
@@ -253,10 +260,10 @@ internal class MultiSelectImpl<I : Comparable<I>>(myContext: Context,
 
     internal fun animateTranslation(view: View, deltaX: Float, deltaY: Float, duration: Long) {
         view.animate().setDuration(duration)
-                .setInterpolator(OvershootInterpolator(1.1f))
-                .translationXBy(deltaX)
-                .translationYBy(deltaY)
-                .start()
+            .setInterpolator(OvershootInterpolator(1.1f))
+            .translationXBy(deltaX)
+            .translationYBy(deltaY)
+            .start()
     }
 
     override fun onSaveInstanceState(): Parcelable {
@@ -291,12 +298,12 @@ internal class MultiSelectImpl<I : Comparable<I>>(myContext: Context,
 
             val leftScrollPos = state.getInt(STATE_LEFT_POS, -1)
             if (leftScrollPos != -1) {
-                recyclerLeft.layoutManager.scrollToPosition(leftScrollPos)
+                recyclerLeft.layoutManager?.scrollToPosition(leftScrollPos)
             }
 
             val rightScrollPos = state.getInt(STATE_RIGHT_POS, -1)
             if (rightScrollPos != -1) {
-                recyclerRight.layoutManager.scrollToPosition(rightScrollPos)
+                recyclerRight.layoutManager?.scrollToPosition(rightScrollPos)
             }
         }
     }

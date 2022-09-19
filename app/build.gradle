@@ -1,19 +1,15 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 24
-    buildToolsVersion "24.0.2"
+    compileSdkVersion 33
+    buildToolsVersion "30.0.3"
 
     defaultConfig {
         applicationId "com.yalantis.multiselect.demo"
-        targetSdkVersion 24
+        targetSdkVersion 33
         minSdkVersion 17
         versionCode 1
         versionName "1.0"
-        jackOptions {
-            enabled true
-            additionalParameters('jack.incremental': 'true')
-        }
     }
 
     compileOptions {
@@ -21,16 +17,12 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
-    dexOptions {
-        javaMaxHeapSize '4096m'
-    }
-
     signingConfigs {
         release {
-            storeFile file(RELEASE_STORE_FILE)
-            storePassword RELEASE_KEYSTORE_PASSWORD
-            keyAlias RELEASE_KEY_ALIAS_NAME
-            keyPassword RELEASE_KEY_ALIAS_PASSWORD
+//            storeFile file(RELEASE_STORE_FILE)
+//            storePassword RELEASE_KEYSTORE_PASSWORD
+//            keyAlias RELEASE_KEY_ALIAS_NAME
+//            keyPassword RELEASE_KEY_ALIAS_PASSWORD
         }
     }
 
@@ -45,16 +37,15 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
 
-    compile project(path: ':multiselection')
+    implementation project(path: ':multiselection')
     // in real project use this:
     //compile 'com.github.yalantis:multi-selection:v0.1'
 
-    compile "com.android.support:support-v4:$support_version"
-    compile "com.android.support:appcompat-v7:$support_version"
-    compile "com.android.support:recyclerview-v7:$support_version"
-    compile 'com.android.support:design:24.2.0'
+    implementation "androidx.appcompat:appcompat:$androidx_version"
+    implementation "androidx.recyclerview:recyclerview:$androidx_recycler_view_version"
+    implementation "com.google.android.material:material:$androidx_material_version"
 
 }
 repositories {

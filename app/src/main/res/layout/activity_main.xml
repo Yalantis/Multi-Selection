@@ -1,32 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/black"
-    >
+    android:background="@android:color/black">
 
-  <android.support.v7.widget.Toolbar
-      android:id="@+id/toolbar"
-      android:layout_width="match_parent"
-      android:layout_height="?attr/actionBarSize"
-      android:background="@drawable/toolbar_bg"
-      android:layout_gravity="top" >
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_gravity="top"
+        android:background="@drawable/toolbar_bg">
 
-      <TextView
-          android:text="@string/activity_title"
-          android:layout_gravity="center"
-          android:textStyle="bold"
-          android:textSize="18dp"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/activity_title"
+            android:textSize="18dp"
+            android:textStyle="bold" />
 
-  </android.support.v7.widget.Toolbar>
+    </androidx.appcompat.widget.Toolbar>
 
-  <FrameLayout
-      android:id="@+id/mount_point"
-      android:layout_marginTop="?attr/actionBarSize"
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"/>
+    <FrameLayout
+        android:id="@+id/mount_point"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize" />
 
 </FrameLayout>

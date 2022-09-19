@@ -1,10 +1,10 @@
 package com.yalantis.multiselection.lib
 
 import android.content.Context
-import android.support.v4.view.ViewPager
 import android.util.AttributeSet
 import android.util.Log
 import android.view.MotionEvent
+import androidx.viewpager.widget.ViewPager
 
 /**
  * Created by Artem Kholodnyi on 9/2/16.
@@ -17,8 +17,8 @@ class MultiSelectViewPager : ViewPager {
      */
     var onClickCallback: (Float, Float) -> Boolean = { x, y -> false }
 
-    constructor(context: Context?) : super(context)
-    constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs)
+    constructor(context: Context) : super(context)
+    constructor(context: Context, attrs: AttributeSet?) : super(context, attrs)
 
     private var lastDownX: Float = -1f
     private var lastDownY: Float = -1f
