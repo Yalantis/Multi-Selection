@@ -8,8 +8,8 @@ android {
         applicationId "com.yalantis.multiselect.demo"
         targetSdkVersion 33
         minSdkVersion 17
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName "1.1"
     }
 
     compileOptions {
@@ -41,7 +41,7 @@ dependencies {
 
     implementation project(path: ':multiselection')
     // in real project use this:
-    //compile 'com.github.yalantis:multi-selection:v0.1'
+//    implementation 'com.github.yalantis:multi-selection:v0.2'
 
     implementation "androidx.appcompat:appcompat:$androidx_version"
     implementation "androidx.recyclerview:recyclerview:$androidx_recycler_view_version"
