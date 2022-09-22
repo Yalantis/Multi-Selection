@@ -1,11 +1,11 @@
 <resources>
-  <string name="app_name">Multi Select</string>
-  <string name="activity_title">Create Playlist</string>
-  <string name="nothing_selected">Don\'t you like anything? :\'(</string>
+    <string name="app_name">Multi Select</string>
+    <string name="activity_title">Create Playlist</string>
+    <string name="nothing_selected">Don\'t you like anything? :\'(</string>
 
-  <plurals name="you_selected_x_songs">
-    <item quantity="one">You selected %d song. Good taste!</item>
-    <item quantity="other">You selected %d songs. Good taste!</item>
-  </plurals>
+    <plurals name="you_selected_x_songs">
+        <item quantity="one">You selected %d song. Good taste!</item>
+        <item quantity="other">You selected %d songs. Good taste!</item>
+    </plurals>
 
 </resources>

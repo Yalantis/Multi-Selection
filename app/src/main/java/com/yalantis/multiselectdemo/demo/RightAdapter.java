@@ -8,8 +8,6 @@ import com.yalantis.multiselectdemo.R;
 import com.yalantis.multiselectdemo.demo.model.Track;
 import com.yalantis.multiselection.lib.adapter.BaseRightAdapter;
 
-import org.jetbrains.annotations.NotNull;
-
 /**
  * Created by Artem Kholodnyi on 9/6/16.
  */
@@ -28,7 +26,7 @@ public class RightAdapter extends BaseRightAdapter<Track, ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NotNull final ViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolder holder, int position) {
         super.onBindViewHolder(holder, position);
 
         ViewHolder.bind(holder, getItemAt(position));

@@ -1,11 +1,9 @@
 package com.yalantis.multiselection.lib.adapter
 
-import android.support.v4.view.PagerAdapter
-import android.support.v4.view.ViewPager
-import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
-import java.io.Serializable
+import androidx.viewpager.widget.PagerAdapter
+import androidx.viewpager.widget.ViewPager
 
 /**
  * Created by Artem Kholodnyi on 8/17/16.
@@ -25,7 +23,7 @@ class ViewPagerAdapter(val pageWidth: Float) : PagerAdapter() {
         return view == `object`
     }
 
-    override fun instantiateItem(container: ViewGroup?, position: Int): Any {
+    override fun instantiateItem(container: ViewGroup, position: Int): Any {
         val pager = container as ViewPager
         val view = getView(position, pager)
         pager.addView(view)

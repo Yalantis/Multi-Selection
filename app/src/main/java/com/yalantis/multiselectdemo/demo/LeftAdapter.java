@@ -1,9 +1,10 @@
 package com.yalantis.multiselectdemo.demo;
 
-import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.annotation.NonNull;
 
 import com.yalantis.multiselectdemo.R;
 import com.yalantis.multiselectdemo.demo.model.Track;
@@ -12,7 +13,7 @@ import com.yalantis.multiselection.lib.adapter.BaseLeftAdapter;
 /**
  * Created by Artem Kholodnyi on 9/3/16.
  */
-public class LeftAdapter extends BaseLeftAdapter<Track, ViewHolder>{
+public class LeftAdapter extends BaseLeftAdapter<Track, ViewHolder> {
 
     private final Callback callback;
 
@@ -23,7 +24,7 @@ public class LeftAdapter extends BaseLeftAdapter<Track, ViewHolder>{
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view =  LayoutInflater.from(parent.getContext()).inflate(R.layout.item_view, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_view, parent, false);
         return new ViewHolder(view);
     }
 

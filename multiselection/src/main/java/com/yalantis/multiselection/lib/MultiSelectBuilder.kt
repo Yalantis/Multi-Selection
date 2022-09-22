@@ -1,9 +1,8 @@
 package com.yalantis.multiselection.lib
 
 import android.content.Context
-import android.support.annotation.LayoutRes
-import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
 import com.yalantis.multiselection.R
 import com.yalantis.multiselection.lib.adapter.BaseLeftAdapter
 import com.yalantis.multiselection.lib.adapter.BaseRightAdapter

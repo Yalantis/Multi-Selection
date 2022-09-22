@@ -1,7 +1,7 @@
 package com.yalantis.multiselection.lib
 
-import android.support.v4.view.ViewPager
 import android.view.View
+import androidx.viewpager.widget.ViewPager
 import com.yalantis.multiselection.lib.util.mix
 import com.yalantis.multiselection.lib.util.setScaleXY
 import com.yalantis.multiselection.lib.util.smoothstep

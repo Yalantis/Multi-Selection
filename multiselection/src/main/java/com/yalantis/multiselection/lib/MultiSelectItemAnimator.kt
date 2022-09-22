@@ -1,15 +1,15 @@
 package com.yalantis.multiselection.lib
 
-
-import android.support.v4.animation.AnimatorCompatHelper
-import android.support.v4.view.ViewCompat
-import android.support.v4.view.ViewPropertyAnimatorListener
-import android.support.v7.widget.RecyclerView
-import android.support.v7.widget.RecyclerView.ViewHolder
-import android.support.v7.widget.SimpleItemAnimator
+import android.animation.ValueAnimator
 import android.util.Log
 import android.view.View
+import androidx.core.view.ViewCompat
+import androidx.core.view.ViewPropertyAnimatorListener
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import androidx.recyclerview.widget.SimpleItemAnimator
 import java.util.*
+
 
 /**
  * This implementation of [RecyclerView.ItemAnimator] provides basic
@@ -48,13 +48,21 @@ class MultiSelectItemAnimator : SimpleItemAnimator() {
     private val mRemoveAnimations = mutableListOf<ViewHolder>()
     private val mChangeAnimations = mutableListOf<ViewHolder>()
 
-    data class MoveInfo(var holder: ViewHolder, var fromX: Int, var fromY: Int, var toX: Int, var toY: Int)
+    data class MoveInfo(
+        var holder: ViewHolder,
+        var fromX: Int,
+        var fromY: Int,
+        var toX: Int,
+        var toY: Int
+    )
 
-    data class ChangeInfo(var oldHolder: ViewHolder?, var newHolder: ViewHolder?,
-                          var fromX: Int = 0,
-                          var fromY: Int = 0,
-                          var toX: Int = 0,
-                          var toY: Int = 0)
+    data class ChangeInfo(
+        var oldHolder: ViewHolder?, var newHolder: ViewHolder?,
+        var fromX: Int = 0,
+        var fromY: Int = 0,
+        var toX: Int = 0,
+        var toY: Int = 0
+    )
 
 
     override fun runPendingAnimations() {
@@ -79,8 +87,10 @@ class MultiSelectItemAnimator : SimpleItemAnimator() {
             mPendingMoves.clear()
             val mover = Runnable {
                 for (moveInfo in moves) {
-                    animateMoveImpl(moveInfo.holder, moveInfo.fromX, moveInfo.fromY,
-                            moveInfo.toX, moveInfo.toY)
+                    animateMoveImpl(
+                        moveInfo.holder, moveInfo.fromX, moveInfo.fromY,
+                        moveInfo.toX, moveInfo.toY
+                    )
                 }
                 moves.clear()
                 mMovesList.remove(moves)
@@ -148,19 +158,20 @@ class MultiSelectItemAnimator : SimpleItemAnimator() {
         val view = holder.itemView
         val animation = ViewCompat.animate(view)
         mRemoveAnimations.add(holder)
-        animation.setDuration(getRemoveDuration()).alpha(0f).setListener(object : VpaListenerAdapter() {
-            override fun onAnimationStart(view: View) {
-                dispatchRemoveStarting(holder)
-            }
+        animation.setDuration(getRemoveDuration()).alpha(0f)
+            .setListener(object : VpaListenerAdapter() {
+                override fun onAnimationStart(view: View) {
+                    dispatchRemoveStarting(holder)
+                }
 
-            override fun onAnimationEnd(view: View) {
-                animation.setListener(null)
-                ViewCompat.setAlpha(view, 1f)
-                dispatchRemoveFinished(holder)
-                mRemoveAnimations.remove(holder)
-                dispatchFinishedWhenDone()
-            }
-        }).start()
+                override fun onAnimationEnd(view: View) {
+                    animation.setListener(null)
+                    ViewCompat.setAlpha(view, 1f)
+                    dispatchRemoveFinished(holder)
+                    mRemoveAnimations.remove(holder)
+                    dispatchFinishedWhenDone()
+                }
+            }).start()
     }
 
     override fun animateAdd(holder: ViewHolder): Boolean {
@@ -195,8 +206,10 @@ class MultiSelectItemAnimator : SimpleItemAnimator() {
         }).start()
     }
 
-    override fun animateMove(holder: ViewHolder, fromX: Int, fromY: Int,
-                             toX: Int, toY: Int): Boolean {
+    override fun animateMove(
+        holder: ViewHolder, fromX: Int, fromY: Int,
+        toX: Int, toY: Int
+    ): Boolean {
         var fromX = fromX
         var fromY = fromY
         val view = holder.itemView
@@ -259,8 +272,10 @@ class MultiSelectItemAnimator : SimpleItemAnimator() {
         }).start()
     }
 
-    override fun animateChange(oldHolder: ViewHolder, newHolder: ViewHolder?,
-                               fromX: Int, fromY: Int, toX: Int, toY: Int): Boolean {
+    override fun animateChange(
+        oldHolder: ViewHolder, newHolder: ViewHolder?,
+        fromX: Int, fromY: Int, toX: Int, toY: Int
+    ): Boolean {
         if (oldHolder === newHolder) {
             // Don't know how to run change animations when the same view holder is re-used.
             // run a move animation to handle position changes.
@@ -294,7 +309,8 @@ class MultiSelectItemAnimator : SimpleItemAnimator() {
         val newView = newHolder?.itemView
         if (view != null) {
             val oldViewAnim = ViewCompat.animate(view).setDuration(
-                    changeDuration)
+                changeDuration
+            )
             mChangeAnimations.add(changeInfo.oldHolder!!)
             oldViewAnim.translationX((changeInfo.toX - changeInfo.fromX).toFloat())
             oldViewAnim.translationY((changeInfo.toY - changeInfo.fromY).toFloat())
@@ -317,21 +333,22 @@ class MultiSelectItemAnimator : SimpleItemAnimator() {
         if (newView != null) {
             val newViewAnimation = ViewCompat.animate(newView)
             mChangeAnimations.add(changeInfo.newHolder!!)
-            newViewAnimation.translationX(0f).translationY(0f).setDuration(getChangeDuration()).alpha(1f).setListener(object : VpaListenerAdapter() {
-                override fun onAnimationStart(view: View) {
-                    dispatchChangeStarting(changeInfo.newHolder, false)
-                }
+            newViewAnimation.translationX(0f).translationY(0f).setDuration(getChangeDuration())
+                .alpha(1f).setListener(object : VpaListenerAdapter() {
+                    override fun onAnimationStart(view: View) {
+                        dispatchChangeStarting(changeInfo.newHolder, false)
+                    }
 
-                override fun onAnimationEnd(view: View) {
-                    newViewAnimation.setListener(null)
-                    ViewCompat.setAlpha(newView, 1f)
-                    ViewCompat.setTranslationX(newView, 0f)
-                    ViewCompat.setTranslationY(newView, 0f)
-                    dispatchChangeFinished(changeInfo.newHolder, false)
-                    mChangeAnimations.remove(changeInfo.newHolder!!)
-                    dispatchFinishedWhenDone()
-                }
-            }).start()
+                    override fun onAnimationEnd(view: View) {
+                        newViewAnimation.setListener(null)
+                        ViewCompat.setAlpha(newView, 1f)
+                        ViewCompat.setTranslationX(newView, 0f)
+                        ViewCompat.setTranslationY(newView, 0f)
+                        dispatchChangeFinished(changeInfo.newHolder, false)
+                        mChangeAnimations.remove(changeInfo.newHolder!!)
+                        dispatchFinishedWhenDone()
+                    }
+                }).start()
         }
     }
 
@@ -454,7 +471,7 @@ class MultiSelectItemAnimator : SimpleItemAnimator() {
     }
 
     private fun resetAnimation(holder: ViewHolder) {
-        AnimatorCompatHelper.clearInterpolator(holder.itemView)
+        holder.itemView.animate().interpolator = ValueAnimator().interpolator
         endAnimation(holder)
     }
 
@@ -578,8 +595,10 @@ class MultiSelectItemAnimator : SimpleItemAnimator() {
      *
      *
      */
-    override fun canReuseUpdatedViewHolder(viewHolder: ViewHolder,
-                                  payloads: List<Any>): Boolean {
+    override fun canReuseUpdatedViewHolder(
+        viewHolder: ViewHolder,
+        payloads: List<Any>
+    ): Boolean {
         return !payloads.isEmpty() || super.canReuseUpdatedViewHolder(viewHolder, payloads)
     }
 

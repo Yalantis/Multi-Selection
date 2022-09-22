@@ -1,6 +1,7 @@
 package com.yalantis.multiselection.lib.adapter
 
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
+
 
 /**
  * Created by Artem Kholodnyi on 9/6/16.

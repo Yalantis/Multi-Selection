@@ -32,13 +32,9 @@ allprojects {
 Add the dependency:
 ```Groovy
 dependencies {
-	        compile 'com.github.yalantis:multi-selection:v0.1'
+    implementation 'com.github.yalantis:multi-selection:v0.2'
 }
 ```
-
-## How to use this library
-
-Instructions can be found [here](https://yalantis.com/blog/how-we-created-a-multiselection-solution-for-android/) in section How to use MultiSelect
 
 ## Let us know!
 

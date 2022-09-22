@@ -1,17 +1,16 @@
 package com.yalantis.multiselectdemo.demo;
 
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.MenuItem;
-import android.view.ViewGroup;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
+import com.google.android.material.snackbar.Snackbar;
 import com.yalantis.multiselectdemo.R;
 import com.yalantis.multiselectdemo.demo.model.Track;
 import com.yalantis.multiselectdemo.demo.model.TrackList;
-import com.yalantis.multiselection.lib.MultiSelectBuilder;
 import com.yalantis.multiselection.lib.MultiSelect;
+import com.yalantis.multiselection.lib.MultiSelectBuilder;
 
 import java.util.List;
 
@@ -26,11 +25,11 @@ public class DemoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        setUpToolbar((Toolbar) findViewById(R.id.toolbar));
+        setUpToolbar(findViewById(R.id.toolbar));
 
         MultiSelectBuilder<Track> builder = new MultiSelectBuilder<>(Track.class)
                 .withContext(this)
-                .mountOn((ViewGroup) findViewById(R.id.mount_point))
+                .mountOn(findViewById(R.id.mount_point))
                 .withSidebarWidth(46 + 8 * 2); // ImageView width with paddings
 
         setUpAdapters(builder);

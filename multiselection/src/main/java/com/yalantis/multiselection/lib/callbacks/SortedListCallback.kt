@@ -1,11 +1,11 @@
 package com.yalantis.multiselection.lib.callbacks
 
-import android.support.v7.util.SortedList.Callback
+import androidx.recyclerview.widget.SortedList
 
 /**
  * Created by Artem Kholodnyi on 9/4/16.
  */
-open class SortedListCallback<T : Comparable<T>> : Callback<T>() {
+open class SortedListCallback<T : Comparable<T>> : SortedList.Callback<T>() {
 
     override fun areItemsTheSame(item1: T, item2: T): Boolean {
         return item1 == item2

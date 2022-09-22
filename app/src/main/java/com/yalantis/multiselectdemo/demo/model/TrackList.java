@@ -9,7 +9,7 @@ import java.util.List;
  * Created by Artem Kholodnyi on 9/6/16.
  */
 public class TrackList {
-    public final static List<Track> TRACKS = new ArrayList<Track>(){{
+    public final static List<Track> TRACKS = new ArrayList<Track>() {{
         add(new Track("Dead Inside", "Muse", R.drawable.img_dead));
         add(new Track("Sandman", "Hurts", R.drawable.img_sandman));
         add(new Track("Doing It to Death", "The Kills", R.drawable.img_doing_it));
